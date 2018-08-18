@@ -1,4 +1,6 @@
-CC=gcc
+CROSS=arm-cortexa9_neon-linux-gnueabi-
+CC=$(CROSS)gcc
+AR=$(CROSS)ar
 CFLAGS=
 LDFLAGS=
 SRC_DIR=./src/
@@ -8,7 +10,7 @@ OBJ=$(SRC:.c=.o)
 EXEC=libobdii.a
 
 all: $(OBJ)
-	ar -cr $(OBJ_DIR)$(EXEC) $^
+	$(AR) -cr $(OBJ_DIR)$(EXEC) $^
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ -c $^
